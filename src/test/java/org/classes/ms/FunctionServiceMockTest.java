@@ -1,27 +1,26 @@
 package org.classes.ms;
 
+
 import static org.mockito.Mockito.*;
 
 
+import org.classes.ms.FunctionService;
 import org.junit.*;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 
 
 
-@SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
 public class FunctionServiceMockTest {
 
     @InjectMocks
     FunctionService calc = new FunctionService();
 
-    @Mock
-    FunctionServiceCloud funServCloud;
+    //@Mock
+    //FunctionServiceCloud funServCloud;
 
     @Before
     public void init(){
@@ -31,9 +30,19 @@ public class FunctionServiceMockTest {
     }
 
     @Test
-    public void testSum(){
+    public void sumMustReturn10WhenFirstNumberIs4AndSecondNumber6(){
         //calc = new FunctionService();
         Assert.assertEquals(10.0,calc.sum(4,6),0.001);
+
+        //Arrange
+
+        //Act
+
+
+        //Assert
+
+
+
     }
 
     @Test
@@ -56,7 +65,7 @@ public class FunctionServiceMockTest {
     @Test
     public void testSumCloud(){
 
-        when(funServCloud.sum(5,5)).thenReturn(10.0);
+        //when(funServCloud.sum(5,5)).thenReturn(10.0);
 
         Assert.assertEquals(10.0, calc.sumEnOracleCloud(5,5),.001);
 

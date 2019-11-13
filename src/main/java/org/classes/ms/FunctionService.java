@@ -31,6 +31,10 @@ public class FunctionService {
         return returnValue.intValue();
     }
 
+    @GetMapping("/division/{a}/{b}")
+    public Integer division(@PathVariable Integer a, @PathVariable  Integer b){ return a / b; }
+
+
     @GetMapping("/sumEnOracleCloud/{a}/{b}")
     public double sumEnOracleCloud(double a, double b){
         return funcServCloud.sum(a,b);

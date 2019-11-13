@@ -1,13 +1,34 @@
 package org.classes.ms;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.boot.SpringApplication;
 
-@SpringBootTest
-class MsApplicationTests {
+import static org.mockito.Mockito.times;
+import static org.powermock.api.mockito.PowerMockito.mockStatic;
+import static org.powermock.api.mockito.PowerMockito.verifyStatic;
+
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest({SpringApplication.class})
+public class MsApplicationTests {
 
 	@Test
-	void contextLoads() {
+	public void mainMustCallRunMethod() {
+		//Arrange
+		String[] args = new String[0];
+		mockStatic(SpringApplication.class);
+
+		//act
+		MsApplication.main(args);
+
+		//Assert
+		verifyStatic(SpringApplication.class,times(1));
+		SpringApplication.run(MsApplication.class, args);
+
 	}
 
 }
+
